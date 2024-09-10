@@ -1,0 +1,61 @@
+/*Stdudent Grade Calculator_Python*/
+
+#importing Tkinter library
+import tkinter
+from tkinter import *
+#creating the main window and specifying its dimensions
+root=Tk()
+root.title("Student Grade Tracker")
+root.geometry("700x600")
+#create the function calculated
+def Calculated():
+    data_structures=int(data_structuresentry.get())
+    operating=int(operatingentry.get())
+    artificial=int(artificialentry.get())
+    database=int(databaseentry.get())
+    datascience=int(datascienceentry.get())
+    total=(data_structures+operating+artificial+database+datascience)
+    Label(text=f"{total}",font="arial 20 bold").place(x=250,y=250)
+    average=int(total/5)
+    Label(text=f"{average}",font="arial 20 bold").place(x=250,y=300)
+    if average>60:
+        grade="PASS"
+    else:
+        grade="Fail"
+    Label(text=f"{grade}",font="arial 25 bold",bg="Red").place(x=250,y=350)
+course1=Label(root,text="Data Stuctures:",font="arial 10")
+course2=Label(root,text="Operating Systems:",font="arial 10")
+course3=Label(root,text="Artificial Intelligence:",font="arial 10")
+course4=Label(root,text="Database Management System:",font="arial 10")
+course5=Label(root,text="Data Science:",font="arial 10")
+total=Label(root,text="Total:",font="arial 10")
+average=Label(root,text="Average:",font="arial 10")
+grade=Label(root,text="Grade:",font="arial 10")
+course1.place(x=50,y=20)
+course2.place(x=50,y=60)
+course3.place(x=50,y=110)
+course4.place(x=50,y=150)
+course5.place(x=50,y=200)
+total.place(x=50,y=250)
+average.place(x=50,y=300)
+grade.place(x=50,y=350)
+data_structuresvalue=StringVar()
+operatingvalue=StringVar()
+artificialvalue=StringVar()
+databasevalue=StringVar()
+datasciencevalue=StringVar()
+#Create an Entrry widget for courses,Total,Average.
+data_structuresentry=Entry(root,textvar=data_structuresvalue,font="arial 15",width=15)
+operatingentry=Entry(root,textvar=operatingvalue,font="arial 15",width=15)
+artificialentry=Entry(root,textvar=artificialvalue,font="arial 15",width=15)
+databaseentry=Entry(root,textvar=databasevalue,font="arial 15",width=15)
+datascienceentry=Entry(root,textvar=datasciencevalue,font="arial 15",width=15)
+data_structuresentry.place(x=250,y=20)
+operatingentry.place(x=250,y=60)
+artificialentry.place(x=250,y=110)
+databaseentry.place(x=250,y=160)
+datascienceentry.place(x=250,y=210)
+#creating a button for Calculate and Exit option
+Button(text="Calculate",font="arial 10",bg="white",bd=10,command=Calculated).place(x=50,y=400)
+Button(text="Exit",font="arial 10",bg="white",bd=10,width=8,command=lambda:exit()).place(x=35,y=500)
+root.mainloop()
